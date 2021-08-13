@@ -1,0 +1,24 @@
+#current-card{
+    float: right;
+    display: none;
+}
+
+#card-img{
+    float: right;
+}
+
+#user-hit{
+    float: right;
+}
+
+#show{
+    float: right;
+}
+
+#dealer-hand{
+    display: none;
+}
+
+#hand-value{
+    float: right;
+}

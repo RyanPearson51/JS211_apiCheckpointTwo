@@ -29,7 +29,15 @@ fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=2`).then(function(res
     let api = json;
     let deckId = api.deck_id;
     console.log(deckId);
+    //This is definitely not the best way to do this, but i was having trouble with multiple clicks
+    //The first click would work but then every card after that would be the same card
+    //I know there is a very simple fix to loop through and have each click create a new card but this does work
+    
     hitButton = document.getElementById('user-hit');
+    hitButton2 = document.getElementById('user-hit2');
+    hitButton3 = document.getElementById('user-hit3');
+    hitButton4 = document.getElementById('user-hit4');
+
     //use the current deckId in the new fetch to draw another card from that deck
     fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
         console.log('response status', response.status)
@@ -44,6 +52,51 @@ fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=2`).then(function(res
         
         
     })  
+
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
+        console.log('response status', response.status)
+        return response.json();
+    })  .then(function(json){
+        //when the Hit button is clicked, draw another card
+        hitButton2.onclick = function(){
+            console.log('response payload:', json)
+            processJson(json);
+        }
+
+        
+        
+    })  
+
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
+        console.log('response status', response.status)
+        return response.json();
+    })  .then(function(json){
+        //when the Hit button is clicked, draw another card
+        hitButton3.onclick = function(){
+            console.log('response payload:', json)
+            processJson(json);
+        }
+
+        
+        
+    })  
+
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
+        console.log('response status', response.status)
+        return response.json();
+    })  .then(function(json){
+        //when the Hit button is clicked, draw another card
+        hitButton4.onclick = function(){
+            console.log('response payload:', json)
+            processJson(json);
+        }
+
+        
+        
+    })  
+
+
+    
     
 })
 

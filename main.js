@@ -30,6 +30,10 @@ fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=2`).then(function(res
     let deckId = api.deck_id;
     console.log(deckId);
     hitButton = document.getElementById('user-hit');
+    hitButton2 = document.getElementById('user-hit2');
+    hitButton3 = document.getElementById('user-hit3');
+    hitButton4 = document.getElementById('user-hit4');
+
     //use the current deckId in the new fetch to draw another card from that deck
     fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
         console.log('response status', response.status)
@@ -37,6 +41,48 @@ fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=2`).then(function(res
     })  .then(function(json){
         //when the Hit button is clicked, draw another card
         hitButton.onclick = function(){
+            console.log('response payload:', json)
+            processJson(json);
+        }
+
+        
+        
+    })  
+
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
+        console.log('response status', response.status)
+        return response.json();
+    })  .then(function(json){
+        //when the Hit button is clicked, draw another card
+        hitButton2.onclick = function(){
+            console.log('response payload:', json)
+            processJson(json);
+        }
+
+        
+        
+    })  
+
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
+        console.log('response status', response.status)
+        return response.json();
+    })  .then(function(json){
+        //when the Hit button is clicked, draw another card
+        hitButton3.onclick = function(){
+            console.log('response payload:', json)
+            processJson(json);
+        }
+
+        
+        
+    })  
+
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).then(function(response){
+        console.log('response status', response.status)
+        return response.json();
+    })  .then(function(json){
+        //when the Hit button is clicked, draw another card
+        hitButton4.onclick = function(){
             console.log('response payload:', json)
             processJson(json);
         }
@@ -152,7 +198,7 @@ function showDealerHand(){
     console.log(`User Score: ${totalHandValue}`)
     if (roboNumber>21 && totalHandValue>21 || roboNumber==totalHandValue){
         console.log('Tie!')
-    } else if(roboNumber>21 && totalHandValue<=21 || (roboNumber < totalHandValue && totalHandValue <=21)){
+    } else if((roboNumber>21 && totalHandValue<=21) || (roboNumber < totalHandValue && totalHandValue <=21)){
         console.log('User Wins!')
     } else if(totalHandValue>21 && roboNumber <=21 || roboNumber > totalHandValue){
         console.log('Robo Dealer Wins!')

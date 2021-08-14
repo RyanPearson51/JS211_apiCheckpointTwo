@@ -57,6 +57,7 @@ fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=2`).then(function(res
         hitButton2.onclick = function(){
             console.log('response payload:', json)
             processJson(json);
+            
         }
 
         
@@ -151,6 +152,7 @@ const currentCard = document.getElementById('current-card');
         card.value = '11'
     }
     console.log(parseInt(card.value));
+    console.log('total hand value:', totalHandValue);
 
     
     
@@ -198,10 +200,27 @@ function showDealerHand(){
     console.log(`User Score: ${totalHandValue}`)
     if (roboNumber>21 && totalHandValue>21 || roboNumber==totalHandValue){
         console.log('Tie!')
+        const messageTie = document.getElementById('tie-message')
+        const tieMessage = document.createElement('h1')
+        const tie = document.createTextNode(`TIE!`)
+        tieMessage.appendChild(tie);
+        messageTie.append(tieMessage);
     } else if((roboNumber>21 && totalHandValue<=21) || (roboNumber < totalHandValue && totalHandValue <=21)){
         console.log('User Wins!')
+        const messageUser = document.getElementById('user-win-message')
+        const userMessage = document.createElement('h1')
+        const user = document.createTextNode(`User Wins!`)
+        userMessage.appendChild(user);
+        messageUser.append(userMessage)
     } else if(totalHandValue>21 && roboNumber <=21 || roboNumber > totalHandValue){
         console.log('Robo Dealer Wins!')
+        const messageDealer = document.getElementById('dealer-win-message')
+        const dealerMessage = document.createElement('h1')
+        const dealer = document.createTextNode(`Dealer Wins!`)
+        dealerMessage.appendChild(dealer);
+        messageDealer.append(dealerMessage)
     }
     //code for if user won/lost:
+    
+
 }

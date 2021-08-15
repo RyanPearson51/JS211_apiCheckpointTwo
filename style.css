@@ -1,14 +1,14 @@
 #current-card{
-    float: right;
+    
     display: none;
 }
 
 #card-img{
-    float: right;
+    
 }
 
 #user-hit #user-hit2 #user-hit3 #user-hit4{
-    float: right;
+   
 }
 
 #show{
@@ -17,8 +17,14 @@
 
 #dealer-hand{
     display: none;
+    float: right;
+    
 }
 
 #hand-value{
+    
+}
+
+#robo-image{
     float: right;
 }

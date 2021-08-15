@@ -104,14 +104,44 @@ fetch(`https://deckofcardsapi.com/api/deck/new/draw/?count=2`).then(function(res
 
 
 let totalHandValue = 0;
+let hasAce = 0;
+let count=0;
 processJson = function(json){
     
     //loop through the results array and process one card at a time
     for(let i=0; i<json.cards.length; i++){
         let card = json.cards[i];
+        if(card.code.includes('A')){
+            hasAce++
+            console.log('ACE--', hasAce)
+        }
+       
+        
         processCard(card);
+        //update the total hand value
         totalHandValue += (parseInt(json.cards[i].value));
-        console.log(totalHandValue)
+        console.log('total hand value:', totalHandValue)
+        console.log(card.code);
+        
+        //if the  ace would make the hand value go over 21, turn that ace into a 1 instead of 11
+        if(totalHandValue>21){
+            if(hasAce ==1 && count==0){
+                totalHandValue-=10;
+                count++
+            }  
+            console.log('new value', totalHandValue)
+        }
+    
+
+
+
+        /*if(card.code.includes('A')){
+            if(totalHandValue>21){
+                totalHandValue-=10;
+            }
+            console.log(totalHandValue);
+        }
+        */
         
         /*try{
         processCard(card);
@@ -120,11 +150,15 @@ processJson = function(json){
         }*/
     }
     
+    //code to get the users hand value on the webpage
     const handValue = document.getElementById('hand-value');
         const value = document.createElement('p')
         const number = document.createTextNode(`Hand Total: ${totalHandValue}`)
         value.appendChild(number);
         handValue.append(value);
+
+        console.log('cards:', json.cards)
+        //if(json.cards.code.includes)
 }
 
 
@@ -132,7 +166,7 @@ processJson = function(json){
 //this function generates the initial hand for the user
 //the images will be displayed on the right hand side of the screen, the value will be used to calculate the users score
 let processCard = function(card){
-const currentCard = document.getElementById('current-card');
+//const currentCard = document.getElementById('current-card');
 //const handValue = document.getElementById('hand-value');
 
 
@@ -143,6 +177,7 @@ const currentCard = document.getElementById('current-card');
     let cardSuit = card.suit;
     let cardImage = card.image;
     
+    
     //For counting purposes, make sure jack, queen, and king are all worth 10
     //Will work on Aces later
     if(card.value=='JACK' || card.value=='QUEEN' || card.value=='KING'){
@@ -152,7 +187,7 @@ const currentCard = document.getElementById('current-card');
         card.value = '11'
     }
     console.log(parseInt(card.value));
-    console.log('total hand value:', totalHandValue);
+    //console.log('total hand value:', totalHandValue);
 
     
     
@@ -224,3 +259,8 @@ function showDealerHand(){
     
 
 }
+
+
+
+
+//Tests i would need:

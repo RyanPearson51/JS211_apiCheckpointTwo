@@ -187,7 +187,7 @@ let processCard = function(card){
         card.value = '11'
     }
     console.log(parseInt(card.value));
-    //console.log('total hand value:', totalHandValue);
+    
 
     
     

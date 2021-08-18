@@ -276,5 +276,5 @@ function showDealerHand(){
 //Correctly identifies a user win
 //Correctly idenitifies a dealer win
 //Correctly identifies a tie
-//Displays correct result on screen after showing dealers hand
+//Displays correct result on screen after showing dealer hand
 

@@ -264,3 +264,17 @@ function showDealerHand(){
 
 
 //Tests i would need:
+//User starts with 2 cards
+//user can draw multiple cards 1 by 1 
+//Each drawn card is different and takes it out of the starting pile
+//Users cards are added up correctly
+//10/j/q/k all count as 10
+//A counts as 11 or 1, depending on the hand total (**this only works for 1 ace in a hand...**)
+//Users hand total is diplayed correctly on the screen
+
+//Robo-dealer has a randomly generated hand score between 17-23, will never be below 17 and will bust 2/7 or 28% of the time
+//Correctly identifies a user win
+//Correctly idenitifies a dealer win
+//Correctly identifies a tie
+//Displays correct result on screen after showing dealer hand
+
